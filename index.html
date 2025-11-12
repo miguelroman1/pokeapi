@@ -1,1 +1,14 @@
-{% extends 'base' %}
+{% extends "base.html" %}
+
+{% block title %}Buscar Pokémon{% endblock %}
+
+{% block content %}
+<form action="{{ url_for('search_pokemon') }}" method="POST">
+  <div class="mb-3">
+    <label for="pokemon_name" class="form-label">Nombre del Pokémon</label>
+    <input type="text" class="form-control" id="pokemon_name" name="pokemon_name" placeholder="Ejemplo: pikachu">
+    <div class="form-text">Busca tu Pokémon favorito</div>
+  </div>
+  <button type="submit" class="btn btn-primary " >Buscar</button>
+</form>
+{% endblock %}
