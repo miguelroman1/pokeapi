@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Pokédex{% endblock %}</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+  </head>
+<body class="bg-light d-flex flex-column align-items-center justify-content-center min-vh-100"> 
+  
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 mt-4"> 
+        
+        <div class="card shadow-lg border-0 rounded-4 p-4 p-md-5"> 
+            
+            <h1 class="text-center display-4 text-danger fw-bold mb-4">
+                Pokédex <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-controller" viewBox="0 0 16 16">
+                  <path d="M11.5 2a.5.5 0 0 1 .5.5v1.793l3.146 3.147a.5.5 0 0 1-.354.854L14 8.207V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h1.5v-4.192l-4.504-4.504A2.5 2.5 0 0 0 8 2.5v11.956l.5 0a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1l.5 0V2.5a2.5 2.5 0 0 0-2.496-2.5h-2A.5.5 0 0 1 2 2.5v10.956l.5 0a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1l.5 0V8.207L1.146 7.146a.5.5 0 0 1-.354-.854L4 3.793V2.5a.5.5 0 0 1 .5-.5h7zM11 3H5a1.5 1.5 0 0 0-1.5 1.5v6.5a1.5 1.5 0 0 0 1.5 1.5h6a1.5 1.5 0 0 0 1.5-1.5V4.5A1.5 1.5 0 0 0 11 3z"></path>
+                </svg>
+            </h1>
+            
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <ul class="list-unstyled mb-0">
+                    {% for msg in messages %}
+                      <li>{{ msg }}</li>
+                    {% endfor %}
+                  </ul>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endif %}
+            {% endwith %}
+            
+            <div class="card-body p-0">
+                {% block content %}{% endblock %}
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

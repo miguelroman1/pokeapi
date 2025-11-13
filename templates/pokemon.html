@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ pokemon.name }}{% endblock %}
+
+{% block content %}
+<div class="text-center">
+  
+  <div class="card bg-light text-dark shadow-sm p-4 mb-4">
+    <h2 class="text-capitalize text-dark mb-3">{{ pokemon.name }} <span class="badge bg-secondary">#{{ pokemon.id }}</span></h2>
+    
+    <div class="mb-4">
+      <img src="{{ pokemon.sprite }}" alt="{{ pokemon.name }}" class="img-fluid" style="width:200px;">
+    </div>
+    
+    <h4 class="mt-4 text-primary">Habilidades:</h4>
+    <ul class="list-group list-group-flush w-75 mx-auto mb-4">
+      {% for ability in pokemon.abilities %}
+        <li class="list-group-item list-group-item-info text-dark fw-semibold">{{ ability }}</li>
+      {% endfor %}
+    </ul>
+    
+    <h4 class="text-primary">Tipo(s):</h4>
+    <ul class="list-group list-group-flush w-75 mx-auto mb-4">
+      {% for types in pokemon.types %}
+        <li class="list-group-item list-group-item-action text-dark">{{ types }}</li>
+      {% endfor %}
+    </ul>
+    
+    <div class="card p-3 bg-secondary text-white mx-auto w-75">
+        <h5 class="card-title mb-2">Detalles:</h5>
+        <div class="d-flex justify-content-around">
+            <p class="mb-0">**Peso:** {{ pokemon.weight }}</p>
+            <p class="mb-0">**Altura:** {{ pokemon.height }}</p>
+        </div>
+    </div>
+    
+    <a href="{{ url_for('base') }}" class="btn btn-outline-secondary mt-4">Volver a la Búsqueda</a>
+  </div>
+
+</div>
+{% endblock %}
